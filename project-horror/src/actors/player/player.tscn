@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://chdq7e6dgsns6"]
+
+[ext_resource type="Script" uid="uid://crlngfnqxmyys" path="res://src/actors/player/player.gd" id="1_tps1c"]
+[ext_resource type="Script" uid="uid://bdhe1jh0k3lms" path="res://src/actors/player/components/camera_controller.gd" id="2_u8v1j"]
+[ext_resource type="Script" uid="uid://c3dd7bdebnuqb" path="res://src/actors/common/weapons/weapon_manager.gd" id="3_hod3v"]
+[ext_resource type="PackedScene" uid="uid://d4edihjf45us" path="res://src/actors/common/weapons/melee_weapon.tscn" id="4_dmu6e"]
+[ext_resource type="PackedScene" uid="uid://c5c1ntxbl6egl" path="res://src/actors/common/weapons/ranged_weapon.tscn" id="5_8tnyb"]
+[ext_resource type="PackedScene" uid="uid://dyt7rdd3w7jdc" path="res://src/actors/player/components/drone/drone.tscn" id="7_mfqm3"]
+[ext_resource type="Script" uid="uid://04jxhrfnbw70" path="res://src/actors/common/components/health_component.gd" id="7_qdy1o"]
+[ext_resource type="Script" uid="uid://dwveokegvy2b6" path="res://src/actors/common/components/hurtbox_component.gd" id="8_nq65r"]
+[ext_resource type="Script" uid="uid://n5k4manh34ti" path="res://src/actors/player/components/player_input_controller.gd" id="8_yq53s"]
+[ext_resource type="PackedScene" uid="uid://xtasu5ksv5rj" path="res://src/ui/player_hud.tscn" id="9_nq65r"]
+[ext_resource type="Script" uid="uid://nsj6xn2xdute" path="res://src/actors/player/components/player_noise_emitter.gd" id="10_wabo4"]
+[ext_resource type="Script" uid="uid://v6m3c2x36xm" path="res://src/actors/player/components/view_state_manager.gd" id="11_b2jwx"]
+[ext_resource type="Script" uid="uid://l5b821r10x2f" path="res://src/actors/player/components/player_state_machine.gd" id="13_7gp3m"]
+[ext_resource type="Script" uid="uid://cgkcl5pq0etkl" path="res://src/actors/player/states/player_idle_state.gd" id="14_o50i4"]
+[ext_resource type="Script" uid="uid://dh8pguk306mg0" path="res://src/actors/player/states/player_move_state.gd" id="15_1gabj"]
+[ext_resource type="Script" uid="uid://c247p0lbj6reh" path="res://src/actors/player/states/player_airborne_state.gd" id="16_8w5ea"]
+[ext_resource type="Script" uid="uid://dpjm2sjww4nc0" path="res://src/actors/player/states/player_sprint_state.gd" id="16_o50i4"]
+[ext_resource type="Script" uid="uid://dim0c45xyeog3" path="res://src/actors/player/states/player_crouch_state.gd" id="17_cpmty"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3xkmk"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0quvs"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3xkmk"]
+radius = 0.4
+height = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qh67m"]
+radius = 0.4
+height = 0.9
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u8v1j"]
+radius = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wabo4"]
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=546202924 groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_tps1c")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=713531745]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=1935250769]
+unique_name_in_owner = true
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_3xkmk")
+
+[node name="TallShape" type="CollisionShape3D" parent="." unique_id=1585620287]
+shape = SubResource("CapsuleShape3D_0quvs")
+
+[node name="ShortShape" type="CollisionShape3D" parent="." unique_id=6876675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("CapsuleShape3D_3xkmk")
+
+[node name="HeadCheckArea" type="Area3D" parent="." unique_id=394964149]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadCheckArea" unique_id=1399644787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_qh67m")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=730511238]
+unique_name_in_owner = true
+script = ExtResource("2_u8v1j")
+
+[node name="FirstPersonCamera" type="Camera3D" parent="CameraPivot" unique_id=843106197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="WeaponManager" type="Node3D" parent="CameraPivot/FirstPersonCamera" unique_id=255874738]
+script = ExtResource("3_hod3v")
+
+[node name="MeleeWeapon" parent="CameraPivot/FirstPersonCamera/WeaponManager" unique_id=574555119 instance=ExtResource("4_dmu6e")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0.25, 0, -0.75)
+weapon_name = "MeleeWeapon"
+
+[node name="RangedWeapon" parent="CameraPivot/FirstPersonCamera/WeaponManager" unique_id=1614282727 instance=ExtResource("5_8tnyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.75)
+weapon_name = "RangedWeapon"
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=1223878409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.1, 0)
+shape = SubResource("SphereShape3D_u8v1j")
+spring_length = 2.5
+margin = 0.5
+
+[node name="ThirdPersonCamera" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1054947824]
+
+[node name="HurtboxComponent" type="Area3D" parent="." unique_id=87118508]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("8_nq65r")
+metadata/_custom_type_script = "uid://dwveokegvy2b6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=236016998]
+shape = SubResource("CapsuleShape3D_wabo4")
+
+[node name="Drone" parent="." unique_id=1008549235 instance=ExtResource("7_mfqm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+top_level = true
+
+[node name="PlayerHUD" parent="." unique_id=536944516 instance=ExtResource("9_nq65r")]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1273836516]
+script = ExtResource("7_qdy1o")
+metadata/_custom_type_script = "uid://04jxhrfnbw70"
+
+[node name="NoiseEmitter" type="Node" parent="." unique_id=437295941]
+unique_name_in_owner = true
+script = ExtResource("10_wabo4")
+
+[node name="ViewStateManager" type="Node" parent="." unique_id=550734992]
+unique_name_in_owner = true
+script = ExtResource("11_b2jwx")
+
+[node name="PlayerInputController" type="Node" parent="." unique_id=119517349 groups=["player_input"]]
+unique_name_in_owner = true
+script = ExtResource("8_yq53s")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1619830604 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("13_7gp3m")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1452026887]
+script = ExtResource("14_o50i4")
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=1003613882]
+script = ExtResource("15_1gabj")
+
+[node name="Sprint" type="Node" parent="StateMachine" unique_id=1846251423]
+script = ExtResource("16_o50i4")
+
+[node name="Airborne" type="Node" parent="StateMachine" unique_id=838475005]
+script = ExtResource("16_8w5ea")
+
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=2025488271]
+script = ExtResource("17_cpmty")

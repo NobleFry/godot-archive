@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bmrw0yu3t8hma"]
+
+[node name="PipeElbow90" type="Node3D" unique_id=436892417]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=247453947]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=893943153]
+visible = false
+inner_radius = 0.6
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=275564253]
+inner_radius = 1.0
+outer_radius = 1.4
+
+[node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=99268615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+inner_radius = 0.2
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=1339442468]
+inner_radius = 1.4
+outer_radius = 1.8
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=260164136]
+inner_radius = 1.8
+outer_radius = 2.2
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=85560948]
+inner_radius = 2.2
+outer_radius = 2.6
+
+[node name="CSGTorus3D8" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=302172936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+inner_radius = 2.6
+outer_radius = 3.2
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D" unique_id=1385069567]
+visible = false
+inner_radius = 0.2
+outer_radius = 0.6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=176772155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79999983, -0.15000004, -2.25)
+operation = 2
+size = Vector3(9.2, 1.3000001, 4.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=720270122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3000002, -0.15000004, 1.7)
+operation = 2
+size = Vector3(4.6, 1.3000001, 3.4)

@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://ct3k711f0y11s"]
+
+[ext_resource type="Script" uid="uid://bk7neo84wr4b1" path="res://scripts/resources/dialogue_resource.gd" id="1_res"]
+[ext_resource type="Script" uid="uid://hl3vc0vofl0n" path="res://scripts/resources/dialogue_line.gd" id="2_line"]
+[ext_resource type="Script" uid="uid://pqbhacojkrq0" path="res://scripts/resources/dialogue_choice.gd" id="3_choice"]
+
+[sub_resource type="Resource" id="choice_accept"]
+script = ExtResource("3_choice")
+text = "I'll do it"
+next_id = "quest_accepted"
+
+[sub_resource type="Resource" id="choice_decline"]
+script = ExtResource("3_choice")
+text = "Not right now"
+next_id = "quest_declined"
+
+[sub_resource type="Resource" id="line_choice_node"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+choices = Array[ExtResource("3_choice")]([SubResource("choice_accept"), SubResource("choice_decline")])
+
+[sub_resource type="Resource" id="line_quest_accepted"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Excellent! Take this compass. Head north when you're ready. And be careful out there!"
+event = "quest_accepted_event"
+
+[sub_resource type="Resource" id="line_quest_declined"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "No problem. I'll be here if you change your mind."
+
+[sub_resource type="Resource" id="line_quest_intro"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "We've detected strange energy readings from the old ruins to the north. We need someone to investigate."
+next_id = "quest_offer"
+
+[sub_resource type="Resource" id="line_quest_offer"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "It could be dangerous, but we really need your help. Will you do it?"
+next_id = "choice_node"
+event = "quest_offer"
+
+[sub_resource type="Resource" id="line_start"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Oh, you're back! Look, I have a favor to ask."
+next_id = "quest_intro"
+
+[resource]
+script = ExtResource("1_res")
+lines = {
+"choice_node": SubResource("line_choice_node"),
+"quest_accepted": SubResource("line_quest_accepted"),
+"quest_declined": SubResource("line_quest_declined"),
+"quest_intro": SubResource("line_quest_intro"),
+"quest_offer": SubResource("line_quest_offer"),
+"start": SubResource("line_start")
+}

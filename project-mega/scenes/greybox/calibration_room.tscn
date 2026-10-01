@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bhtotdjwi0kta"]
+
+[node name="CalibrationRoom" type="Node3D" unique_id=539492106]
+
+[node name="Geo" type="Node3D" parent="." unique_id=850927899]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Geo" unique_id=839469558]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=328848240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(16, 0.2, 20)
+
+[node name="Ceiling" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1682961091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1, 0)
+size = Vector3(16, 0.2, 20)
+
+[node name="Wall_L" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=813241720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 10.1)
+size = Vector3(16, 12, 0.2)
+
+[node name="Wall_R" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1404301885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -10.1)
+size = Vector3(16, 12, 0.2)
+
+[node name="BackWall" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=739351669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 6, 0)
+size = Vector3(0.2, 12, 20)
+
+[node name="FrontWall" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1053859185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 6, 0)
+size = Vector3(0.2, 12, 20)

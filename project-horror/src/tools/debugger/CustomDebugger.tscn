@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://g7xp1sj5omlx"]
+
+[ext_resource type="Script" uid="uid://brgipvra5l4ua" path="res://src/tools/debugger/custom_debugger.gd" id="1_mc7q2"]
+
+[node name="CustomDebugger" type="CanvasLayer" unique_id=554758948]
+script = ExtResource("1_mc7q2")
+
+[node name="DebugRoot" type="Control" parent="." unique_id=1491901050]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugRoot" unique_id=1835962096]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugRoot/PanelContainer" unique_id=1250745761]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="DebugRoot/PanelContainer/VBoxContainer" unique_id=1335874036]
+layout_mode = 2

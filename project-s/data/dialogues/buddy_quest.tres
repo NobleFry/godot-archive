@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://derqwdg3ul2mv"]
+
+[ext_resource type="Script" uid="uid://bk7neo84wr4b1" path="res://scripts/resources/dialogue_resource.gd" id="1_res"]
+[ext_resource type="Script" uid="uid://hl3vc0vofl0n" path="res://scripts/resources/dialogue_line.gd" id="2_line"]
+[ext_resource type="Script" uid="uid://pqbhacojkrq0" path="res://scripts/resources/dialogue_choice.gd" id="3_choice"]
+
+[sub_resource type="Resource" id="line_quest_hint"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "The ruins are directly north of here. Look for the glowing crystals - that's where the readings are strongest."
+next_id = "quest_warning"
+
+[sub_resource type="Resource" id="line_quest_warning"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Be careful in there. The energy fluctuations can be... unpredictable. Good luck!"
+
+[sub_resource type="Resource" id="line_start"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Back already? How's the investigation going?"
+next_id = "quest_hint"
+
+[resource]
+script = ExtResource("1_res")
+lines = {
+"quest_hint": SubResource("line_quest_hint"),
+"quest_warning": SubResource("line_quest_warning"),
+"start": SubResource("line_start")
+}

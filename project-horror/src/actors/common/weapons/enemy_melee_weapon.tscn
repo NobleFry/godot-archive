@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ca0cc3fxg485b"]
+
+[ext_resource type="Script" uid="uid://dotvfwl0rljul" path="res://src/actors/common/weapons/enemy_melee_weapon.gd" id="1_ifa1b"]
+[ext_resource type="Script" uid="uid://c7kojw4mia71g" path="res://src/actors/common/components/hitbox_component.gd" id="1_q00fr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ifa1b"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40m40"]
+size = Vector3(0.1, 1, 0.1)
+
+[node name="EnemyMeleeWeapon" type="Node3D" unique_id=1846263843]
+script = ExtResource("1_ifa1b")
+attack_range = 1.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=186568197]
+mesh = SubResource("BoxMesh_ifa1b")
+
+[node name="HitboxComponent" type="Area3D" parent="." unique_id=585643212]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_q00fr")
+metadata/_custom_type_script = "uid://c7kojw4mia71g"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=749533462]
+shape = SubResource("BoxShape3D_40m40")

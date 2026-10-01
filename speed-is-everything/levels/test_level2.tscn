@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b61ejvvstare7"]
+
+[ext_resource type="PackedScene" uid="uid://c5h6uyrd6buqu" path="res://characters/player.tscn" id="1_3txii"]
+[ext_resource type="Texture2D" uid="uid://75wi2nxm6xto" path="res://assets/environment/background/back.png" id="4_yeqau"]
+
+[node name="TestLevel2" type="Node2D" unique_id=1331935611]
+
+[node name="Player" parent="." unique_id=1594901957 instance=ExtResource("1_3txii")]
+z_index = 1
+position = Vector2(489, 393)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=837225723]
+layer = -100
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer" unique_id=1056062493]
+position = Vector2(834, 303)
+scale = Vector2(5.1008615, 3.5058997)
+texture = ExtResource("4_yeqau")

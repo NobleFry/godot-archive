@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dm1sohn5nmpmo"]
+
+[ext_resource type="Script" uid="uid://csp26nyqk6m8m" path="res://src/actors/common/components/health_bar_3d.gd" id="1_135kl"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ue72o"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HealthBar3d" type="Node3D" unique_id=1289741784]
+script = ExtResource("1_135kl")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=654965255]
+transparent_bg = true
+size = Vector2i(200, 26)
+render_target_update_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=999590818]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=338278006]
+billboard = 1
+texture = SubResource("ViewportTexture_ue72o")

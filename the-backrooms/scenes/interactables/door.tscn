@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://r2wkl2noj3cy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v71sr"]
+size = Vector3(1, 2.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvx6b"]
+size = Vector3(1, 2.1000001, 0.1)
+
+[node name="Door" type="StaticBody3D" unique_id=692841497]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=686945261]
+
+[node name="DoorFrame" type="CSGBox3D" parent="." unique_id=264308561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.1, 0)
+use_collision = true
+size = Vector3(1.2, 2.2, 0.2)
+
+[node name="Subtraction" type="CSGBox3D" parent="DoorFrame" unique_id=1714735628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05000007, 0)
+operation = 2
+size = Vector3(1, 2.1000001, 0.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1224473522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.05, 0)
+shape = SubResource("BoxShape3D_v71sr")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=49255716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.05, 0)
+mesh = SubResource("BoxMesh_yvx6b")

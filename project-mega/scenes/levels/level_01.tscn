@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ct6ab4ted7jht"]
+
+[ext_resource type="PackedScene" uid="uid://ctbhmbe0hsiwj" path="res://scenes/greybox/wakeup_room.tscn" id="2_2djvx"]
+[ext_resource type="PackedScene" uid="uid://jm5q68ubir0n" path="res://scenes/actors/player.tscn" id="2_i2aat"]
+[ext_resource type="PackedScene" uid="uid://bhtotdjwi0kta" path="res://scenes/greybox/calibration_room.tscn" id="4_uvc87"]
+[ext_resource type="PackedScene" uid="uid://baeqfkct658cd" path="res://scenes/greybox/elevator.tscn" id="5_qdh5e"]
+[ext_resource type="PackedScene" uid="uid://cqevmx2yup6ki" path="res://scenes/greybox/apartment_building.tscn" id="6_1ey3t"]
+[ext_resource type="PackedScene" uid="uid://bft67hyc85riw" path="res://scenes/greybox/Final.tscn" id="6_50wog"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_50wog"]
+
+[sub_resource type="Sky" id="Sky_1ey3t"]
+sky_material = SubResource("PhysicalSkyMaterial_50wog")
+
+[sub_resource type="Environment" id="Environment_t0hvh"]
+background_mode = 2
+sky = SubResource("Sky_1ey3t")
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.79751545, 0.68487483, 0.6263469, 1)
+
+[node name="Level01" type="Node3D" unique_id=1143814727]
+
+[node name="Player" parent="." unique_id=249548925 instance=ExtResource("2_i2aat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.6)
+
+[node name="WakeUpRoom" parent="." unique_id=640103095 instance=ExtResource("2_2djvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, -2.5)
+
+[node name="CalibrationRoom" parent="." unique_id=539492106 instance=ExtResource("4_uvc87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7, 0, -2.5000002)
+
+[node name="Elevator" parent="." unique_id=125886162 instance=ExtResource("5_qdh5e")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -31.2, 0, 20.95)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1138647225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.200001, -0.1, -11)
+size = Vector3(3, 0.2, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2137624972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2, -0.1, 11.75)
+size = Vector3(3, 0.2, 8.5)
+
+[node name="Final" parent="." unique_id=1221525784 instance=ExtResource("6_50wog")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -21.300003, 26, 34.9)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1120429149]
+environment = SubResource("Environment_t0hvh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=44151918]
+transform = Transform3D(-0.8660254, -0.25000003, 0.43301278, 0, 0.8660254, 0.5, -0.50000006, 0.4330127, -0.75, 0, 8.6, 4.5)
+shadow_enabled = true
+
+[node name="ApartmentBuilding" parent="." unique_id=1666685927 instance=ExtResource("6_1ey3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51.44773)

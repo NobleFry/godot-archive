@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c5c1ntxbl6egl"]
+
+[ext_resource type="Script" uid="uid://ckmjsr6wri7bn" path="res://src/actors/common/weapons/ranged_weapon.gd" id="1_4smwa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5pvq"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[node name="RangedWeapon" type="Node3D" unique_id=1614282727]
+script = ExtResource("1_4smwa")
+attack_rate = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1602226408]
+mesh = SubResource("BoxMesh_c5pvq")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1633492887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1298033097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+target_position = Vector3(0, -1, -50)
+collision_mask = 16
+collide_with_areas = true

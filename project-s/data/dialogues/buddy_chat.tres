@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://clqd3yuakrtq0"]
+
+[ext_resource type="Script" uid="uid://pqbhacojkrq0" path="res://scripts/resources/dialogue_choice.gd" id="1_ddpe6"]
+[ext_resource type="Script" uid="uid://bk7neo84wr4b1" path="res://scripts/resources/dialogue_resource.gd" id="1_res"]
+[ext_resource type="Script" uid="uid://hl3vc0vofl0n" path="res://scripts/resources/dialogue_line.gd" id="2_line"]
+
+[sub_resource type="Resource" id="line_chat_later"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Take care! Come back if you need anything."
+
+[sub_resource type="Resource" id="line_chat_options"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "What would you like to talk about?"
+event = "chat_started"
+
+[sub_resource type="Resource" id="line_chat_weather"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Weather's been strange lately. The crystals seem to affect the atmosphere somehow."
+
+[sub_resource type="Resource" id="line_chat_work"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Still working on the crystal project. Making progress, but it's slow going."
+
+[sub_resource type="Resource" id="line_start"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Hey! Good to see you again. Need anything?"
+next_id = "chat_options"
+
+[resource]
+script = ExtResource("1_res")
+lines = {
+"chat_later": SubResource("line_chat_later"),
+"chat_options": SubResource("line_chat_options"),
+"chat_weather": SubResource("line_chat_weather"),
+"chat_work": SubResource("line_chat_work"),
+"start": SubResource("line_start")
+}

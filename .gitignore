@@ -1,0 +1,17 @@
+# ── Godot editor-generated caches ───────────────────────────────
+# Regenerated automatically when a project is opened in the editor.
+.godot/
+android/
+
+# ── OS / editor cruft ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ── Redundant local archives ────────────────────────────────────
+# The extracted folders are committed instead, so these duplicate
+# downloads / old backups are intentionally omitted.
+/project-horror.zip
+/assets/*.zip
+/Assets/*.zip

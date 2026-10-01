@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://jm5q68ubir0n"]
+
+[ext_resource type="Script" uid="uid://b2jo4lbjxe4sd" path="res://scripts/actors/player.gd" id="1_15tap"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cacbb"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_15tap"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=249548925]
+script = ExtResource("1_15tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=407388759]
+shape = SubResource("CapsuleShape3D_cacbb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1353071952]
+visible = false
+mesh = SubResource("CapsuleMesh_15tap")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1386721099]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=320230923]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="CameraPivot" unique_id=728278226]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot" unique_id=320391111]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CameraPivot" unique_id=213411029]
+shadow_enabled = true

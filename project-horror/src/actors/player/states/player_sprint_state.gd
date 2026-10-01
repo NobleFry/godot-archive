@@ -1,0 +1,31 @@
+extends PlayerGroundState
+
+func enter(_msg := {}) -> void:
+	player.is_sprinting = true
+
+func exit() -> void:
+	player.is_sprinting = false
+
+func physics_update(delta: float) -> void:
+	super.physics_update(delta)
+	
+	var move_dir = get_move_direction()
+	
+	# 如果停止移动，回到 Idle
+	if move_dir == Vector3.ZERO:
+		state_machine.transition_to("Idle")
+		return
+	
+	var speed = player.sprint_speed
+	
+	player.velocity.x = move_toward(player.velocity.x, move_dir.x * speed, player.acceleration * delta)
+	player.velocity.z = move_toward(player.velocity.z, move_dir.z * speed, player.acceleration * delta)
+	
+	player.move_and_slide()
+
+func handle_input(event: InputEvent) -> void:
+	super.handle_input(event)
+	
+	# 再次按下冲刺键，切换回普通移动 (行走)
+	if event.is_action_pressed("sprint"):
+		state_machine.transition_to("Move")

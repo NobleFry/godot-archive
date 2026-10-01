@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://cai63qs83efg5"]
+
+[ext_resource type="Script" uid="uid://dd4prp8dknc2h" path="res://scripts/resources/dialogue_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://d0187gqcfnk8" path="res://scripts/resources/dialogue_condition.gd" id="2_cond"]
+[ext_resource type="Resource" uid="uid://clqd3yuakrtq0" path="res://data/dialogues/buddy_chat.tres" id="3_dialogue"]
+
+[sub_resource type="Resource" id="cond_met_buddy"]
+script = ExtResource("2_cond")
+target_name = "met_buddy"
+
+[resource]
+script = ExtResource("1_entry")
+dialogue_id = "buddy_chat"
+dialogue = ExtResource("3_dialogue")
+conditions = Array[ExtResource("2_cond")]([SubResource("cond_met_buddy")])
+description = "Default daily chat. Triggers when no other dialogue is available."

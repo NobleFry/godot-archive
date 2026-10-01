@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cpetpjbu52rji"]
+
+[ext_resource type="Script" uid="uid://cbjrkr1kqgxsu" path="res://src/actors/enemy/guard.gd" id="1_41yhf"]
+[ext_resource type="PackedScene" uid="uid://cslu5gtm7atya" path="res://src/actors/enemy/components/vision_sensor.tscn" id="1_bds1i"]
+[ext_resource type="Script" uid="uid://04jxhrfnbw70" path="res://src/actors/common/components/health_component.gd" id="3_ok2fo"]
+[ext_resource type="PackedScene" uid="uid://dm1sohn5nmpmo" path="res://src/actors/common/components/health_bar_3d.tscn" id="3_ymeaw"]
+[ext_resource type="Script" uid="uid://dwveokegvy2b6" path="res://src/actors/common/components/hurtbox_component.gd" id="5_u282b"]
+[ext_resource type="Script" uid="uid://c3dd7bdebnuqb" path="res://src/actors/common/weapons/weapon_manager.gd" id="6_emmfv"]
+[ext_resource type="PackedScene" uid="uid://ca0cc3fxg485b" path="res://src/actors/common/weapons/enemy_melee_weapon.tscn" id="7_j4gc1"]
+[ext_resource type="Script" uid="uid://covilxbjhvxdk" path="res://src/actors/enemy/components/hearing_sensor.gd" id="8_0muew"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bds1i"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bds1i"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_emmfv"]
+height = 1.8
+
+[node name="Guard" type="CharacterBody3D" unique_id=1040018413]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_41yhf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=91644483]
+shape = SubResource("CapsuleShape3D_bds1i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1092626136]
+mesh = SubResource("CapsuleMesh_bds1i")
+
+[node name="VisionSensor" parent="." unique_id=833378481 instance=ExtResource("1_bds1i")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1540535212]
+avoidance_enabled = true
+
+[node name="HealthBar3d" parent="." unique_id=1289741784 instance=ExtResource("3_ymeaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=118024246]
+script = ExtResource("3_ok2fo")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1294984303]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_u282b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1195051678]
+shape = SubResource("CapsuleShape3D_emmfv")
+
+[node name="WeaponManager" type="Node3D" parent="." unique_id=611727661]
+script = ExtResource("6_emmfv")
+metadata/_custom_type_script = "uid://c3dd7bdebnuqb"
+
+[node name="EnemyMeleeWeapon" parent="WeaponManager" unique_id=1846263843 instance=ExtResource("7_j4gc1")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0.25, 0, -0.75)
+
+[node name="HearingSensor" type="Node3D" parent="." unique_id=1581310615]
+script = ExtResource("8_0muew")

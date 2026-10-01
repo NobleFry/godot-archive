@@ -1,0 +1,824 @@
+[gd_scene format=3 uid="uid://bra3epukk1do2"]
+
+[ext_resource type="PackedScene" uid="uid://jm5q68ubir0n" path="res://scenes/actors/player.tscn" id="1_pmpat"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qc0ht"]
+
+[sub_resource type="Sky" id="Sky_nx5mk"]
+sky_material = SubResource("PhysicalSkyMaterial_qc0ht")
+
+[sub_resource type="Environment" id="Environment_qc0ht"]
+background_mode = 2
+sky = SubResource("Sky_nx5mk")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.002
+
+[node name="ImmersionTest_FromTunnelToMega" type="Node3D" unique_id=272664555]
+
+[node name="World" type="Node3D" parent="." unique_id=2026462809]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1567821643]
+environment = SubResource("Environment_qc0ht")
+
+[node name="DirectionalLight3D_Sun" type="DirectionalLight3D" parent="World" unique_id=1731315554]
+transform = Transform3D(1, 0, 0, 0, 0.80410594, 0.594486, 0, -0.594486, 0.80410594, 0, 5.2423396, -3.805602)
+visible = false
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="FogVolume_Main" type="FogVolume" parent="World" unique_id=448653022]
+visible = false
+
+[node name="Player" parent="." unique_id=249548925 instance=ExtResource("1_pmpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4196814, 0)
+
+[node name="Tunnel" type="Node3D" parent="." unique_id=400306389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Geo" type="Node3D" parent="Tunnel" unique_id=2081836474]
+
+[node name="CSGCombiner3D_Shell" type="CSGCombiner3D" parent="Tunnel/Geo" unique_id=467589734]
+use_collision = true
+
+[node name="CSGBox3D_Floor" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=631414500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGBox3D_LeftWall" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=995152032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D_RightWall" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=1592016701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D_BackWall" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=821890427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 7.6)
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Door" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell/CSGBox3D_BackWall" unique_id=1326988185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5078887, -0.05925274)
+size = Vector3(1.3, 2.1940975, 0.225)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell/CSGBox3D_BackWall/CSGBox3D_Door" unique_id=400605532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04035306, 0)
+operation = 2
+size = Vector3(1.1, 2.1330419, 0.225)
+
+[node name="CSGBox3D_FrontWall" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=1298591456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -7.6)
+visible = false
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Ceiling" type="CSGBox3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=1256775795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=1049663940]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.3911035, 2.9837658, -2.215786)
+radius = 0.069
+height = 20.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=495628451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4356201, 1.6647308, -10.377968)
+radius = 0.106
+height = 4.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell/CSGCylinder3D2" unique_id=713861175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5695302, 0)
+radius = 0.179
+height = 0.2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell/CSGCylinder3D2" unique_id=1485585213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6137333, 0)
+radius = 0.179
+height = 0.2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell/CSGCylinder3D2" unique_id=1837918087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3112135, 0)
+radius = 0.179
+height = 0.2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tunnel/Geo/CSGCombiner3D_Shell" unique_id=1714543469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1020007, 0.627601, -1.0557151)
+radius = 0.355
+height = 1.1157227
+
+[node name="Lighting" type="Node3D" parent="Tunnel" unique_id=1134119440]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Tunnel/Lighting" unique_id=501940970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8.396394)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Tunnel/Lighting" unique_id=1113466884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.34471607)
+light_energy = 0.295
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Tunnel/Lighting" unique_id=635100127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4.081758)
+light_energy = 0.084
+shadow_enabled = true
+
+[node name="Audio" type="Node3D" parent="Tunnel" unique_id=972767524]
+
+[node name="FX" type="Node3D" parent="Tunnel" unique_id=990725378]
+
+[node name="Tunnel2" type="Node3D" parent="." unique_id=171498345]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 0, -15)
+
+[node name="Geo" type="Node3D" parent="Tunnel2" unique_id=1567138059]
+
+[node name="CSGCombiner3D_Shell" type="CSGCombiner3D" parent="Tunnel2/Geo" unique_id=998644781]
+use_collision = true
+
+[node name="CSGBox3D_Floor" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=219823392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGBox3D_LeftWall" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=2034756295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=604664597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5956383, 1.8086408, 0.35180998)
+operation = 2
+size = Vector3(0.23779297, 1, 1.7036133)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=1436158239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5956383, 1.8086408, -3.9225154)
+operation = 2
+size = Vector3(0.23779297, 1, 1.7036133)
+
+[node name="CSGBox3D_RightWall" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=1481412659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D_BackWall" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=2138857770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 7.6)
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_FrontWall" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=104595907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -7.6)
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Ceiling" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=1270627567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGBox3D_Cut" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=331364319]
+transform = Transform3D(-4.3711385e-08, 0, 1.4265665, 0, 1, 0, -0.99999994, 0, -6.23572e-08, -1.6261253, 1.6, 6)
+operation = 2
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Cut2" type="CSGBox3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=1819933822]
+transform = Transform3D(-4.3711385e-08, 0, 1.4265665, 0, 1, 0, -0.99999994, 0, -6.23572e-08, -1.6261244, 1.6, -6.0203586)
+operation = 2
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tunnel2/Geo/CSGCombiner3D_Shell" unique_id=1721342777]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.3853493, 2.9837658, 2.3216)
+radius = 0.069
+height = 20.0
+
+[node name="Lighting" type="Node3D" parent="Tunnel2" unique_id=866864673]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Tunnel2/Lighting" unique_id=873760617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+
+[node name="Audio" type="Node3D" parent="Tunnel2" unique_id=1299741339]
+
+[node name="FX" type="Node3D" parent="Tunnel2" unique_id=2111275601]
+
+[node name="Tunnel3" type="Node3D" parent="." unique_id=1411995648]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.963243, 5.8665032, -14.835375)
+
+[node name="Geo" type="Node3D" parent="Tunnel3" unique_id=1938203808]
+
+[node name="CSGCombiner3D_Shell" type="CSGCombiner3D" parent="Tunnel3/Geo" unique_id=1973456237]
+use_collision = true
+
+[node name="CSGBox3D_Floor" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=1454466025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGBox3D_LeftWall" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=1771289965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=153811851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5956383, 1.8086408, 0.35180998)
+visible = false
+operation = 2
+size = Vector3(0.23779297, 1, 1.7036133)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=1765181907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5956383, 1.8086408, -3.9225154)
+visible = false
+operation = 2
+size = Vector3(0.23779297, 1, 1.7036133)
+
+[node name="CSGBox3D_RightWall" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=236248542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.6, 0)
+size = Vector3(0.2, 3.2, 15)
+
+[node name="CSGBox3D_BackWall" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=1952031423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 7.6)
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_FrontWall" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=509540263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -7.6)
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Ceiling" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=898361350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="CSGBox3D_Cut" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=844389562]
+transform = Transform3D(-4.3711385e-08, 0, 1.4265665, 0, 1, 0, -0.99999994, 0, -6.23572e-08, -1.6261253, 1.6, 6)
+operation = 2
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGBox3D_Cut2" type="CSGBox3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=324173159]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1.4265665, -0.06116867, 1.5999999, -7.608427)
+operation = 2
+size = Vector3(3, 3.2, 0.2)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tunnel3/Geo/CSGCombiner3D_Shell" unique_id=336583103]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.3853493, 2.9837658, 2.3216)
+visible = false
+radius = 0.069
+height = 20.0
+
+[node name="Lighting" type="Node3D" parent="Tunnel3" unique_id=228567050]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Tunnel3/Lighting" unique_id=2074604614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+
+[node name="Audio" type="Node3D" parent="Tunnel3" unique_id=1569384961]
+
+[node name="FX" type="Node3D" parent="Tunnel3" unique_id=430388818]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=715770873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.022715, -0.31289303, -8.747868)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1842787873]
+transform = Transform3D(1, 0, 0, 0, 0.7458714, 0.66609, 0, -0.66609, 0.7458714, -0.782959, 1.6879585, -3.0627356)
+size = Vector3(1.434082, 0.2, 4.5023804)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=372014296]
+transform = Transform3D(1, 0, 0, 0, 0.7458714, 0.66609, 0, -0.66609, 0.7458714, -0.782959, -4.283529, -3.0627356)
+size = Vector3(1.434082, 0.2, 4.5023804)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=502143574]
+transform = Transform3D(1, 0, 0, 0, 0.745476, -0.66653246, 0, 0.66653246, 0.745476, 0.70742226, -1.2934818, -3.1076097)
+size = Vector3(1.434082, 0.2, 4.622772)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1842795590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.146665, 0.071006775)
+size = Vector3(3, 0.2, 3)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1735709079]
+transform = Transform3D(1, 0, 0, 0, 0.7458714, 0.66609, 0, -0.66609, 0.7458714, -0.782959, 7.5811744, -3.0627356)
+size = Vector3(1.434082, 0.2, 4.5023804)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1408307114]
+transform = Transform3D(1, 0, 0, 0, 0.745476, -0.66653246, 0, 0.66653246, 0.745476, 0.70742226, 4.599734, -3.1076097)
+size = Vector3(1.434082, 0.2, 4.622772)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1812649629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.039881, 0.071006775)
+size = Vector3(3, 0.2, 3)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D" unique_id=549453259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6652, -1.8447647)
+size = Vector3(3, 0.2, 6.831543)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=626540520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8193226, 0.071006775)
+size = Vector3(3, 0.2, 3)
+
+[node name="RightWall" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1683250011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5555573, 3.7196836, -0.69567394)
+size = Vector3(0.2, 15.936241, 8.075684)
+
+[node name="RightWall2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2038039098]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5555573, 3.7196836, 1.5900898)
+size = Vector3(0.2, 15.936241, 8.075684)
+
+[node name="RightWall3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1083035965]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5555573, 4.81273, -4.663171)
+size = Vector3(0.2, 2.5166392, 8.075684)
+
+[node name="RightWall4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2079283384]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5555573, 10.651232, -4.663171)
+size = Vector3(0.2, 2.5166392, 8.075684)
+
+[node name="LeftWall" type="CSGBox3D" parent="CSGCombiner3D" unique_id=151482831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.589922, 4.525322, -1.2481623)
+size = Vector3(0.2, 14.771439, 6.7148438)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D" unique_id=718981088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8185415, 0.7692957)
+light_color = Color(1, 0.9906667, 0.93, 1)
+light_energy = 0.264
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CSGCombiner3D" unique_id=1584791074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.588209, 0.7692957)
+light_color = Color(1, 0.9906667, 0.93, 1)
+light_energy = 0.79
+
+[node name="Bridge" type="CSGCombiner3D" parent="." unique_id=557245410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.993744, 6.660899, -14.788888)
+use_collision = true
+
+[node name="l1" type="CSGBox3D" parent="Bridge" unique_id=1852208644]
+transform = Transform3D(0.92253137, -0.38592213, 0, 0.38592213, 0.92253137, 0, 0, 0, 1, 4.7683105, -1.8548083, 0)
+size = Vector3(2.2504883, 1.3876953, 3)
+
+[node name="b1" type="CSGBox3D" parent="Bridge" unique_id=1663172233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9955711, -2.302157, 0)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l2" type="CSGBox3D" parent="Bridge" unique_id=51138273]
+transform = Transform3D(0.92253137, -0.38592213, 0, 0.38592213, 0.92253137, 0, 0, 0, 1, -0.79574394, -2.7371576, 0)
+size = Vector3(2.2504883, 1.3520508, 3)
+
+[node name="b2" type="CSGBox3D" parent="Bridge" unique_id=795702818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.636528, -3.1736217, 0)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l3" type="CSGBox3D" parent="Bridge" unique_id=1034492498]
+transform = Transform3D(-0.92253137, 0.38592213, -8.742278e-08, 0.38592213, 0.92253137, 0, 8.065025e-08, -3.3738385e-08, -1, -15.976856, -1.8548083, 0.33751106)
+size = Vector3(2.2504883, 1.3876953, 3)
+
+[node name="b3" type="CSGBox3D" parent="Bridge" unique_id=1255386028]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.206459, -2.302157, 0.22352886)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l4" type="CSGBox3D" parent="Bridge" unique_id=1032467402]
+transform = Transform3D(-0.92253137, 0.38592213, -8.742278e-08, 0.38592213, 0.92253137, 0, 8.065025e-08, -3.3738385e-08, -1, -10.417507, -2.7371576, 0.108781815)
+size = Vector3(2.2504883, 1.3520508, 3)
+
+[node name="b4" type="CSGBox3D" parent="Bridge" unique_id=431055438]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.5791206, -3.1736217, -0.0079984665)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="Bridge2" type="CSGCombiner3D" parent="." unique_id=1066891460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.993744, 6.660899, 24.253017)
+use_collision = true
+
+[node name="l1" type="CSGBox3D" parent="Bridge2" unique_id=1765197807]
+transform = Transform3D(0.92253137, -0.38592213, 0, 0.38592213, 0.92253137, 0, 0, 0, 1, 4.7683105, -1.8548083, 0)
+size = Vector3(2.2504883, 1.3876953, 3)
+
+[node name="b1" type="CSGBox3D" parent="Bridge2" unique_id=2068682333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9955711, -2.302157, 0)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l2" type="CSGBox3D" parent="Bridge2" unique_id=333510590]
+transform = Transform3D(0.92253137, -0.38592213, 0, 0.38592213, 0.92253137, 0, 0, 0, 1, -0.79574394, -2.7371576, 0)
+size = Vector3(2.2504883, 1.3520508, 3)
+
+[node name="b2" type="CSGBox3D" parent="Bridge2" unique_id=929791425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.636528, -3.1736217, 0)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l3" type="CSGBox3D" parent="Bridge2" unique_id=1236712338]
+transform = Transform3D(-0.92253137, 0.38592213, -8.742278e-08, 0.38592213, 0.92253137, 0, 8.065025e-08, -3.3738385e-08, -1, -15.976856, -1.8548083, 0.33751106)
+size = Vector3(2.2504883, 1.3876953, 3)
+
+[node name="b3" type="CSGBox3D" parent="Bridge2" unique_id=1298659567]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.206459, -2.302157, 0.22352886)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="l4" type="CSGBox3D" parent="Bridge2" unique_id=415584878]
+transform = Transform3D(-0.92253137, 0.38592213, -8.742278e-08, 0.38592213, 0.92253137, 0, 8.065025e-08, -3.3738385e-08, -1, -10.417507, -2.7371576, 0.108781815)
+size = Vector3(2.2504883, 1.3520508, 3)
+
+[node name="b4" type="CSGBox3D" parent="Bridge2" unique_id=1327309200]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.5791206, -3.1736217, -0.0079984665)
+size = Vector3(4.0740967, 1.2788086, 3)
+
+[node name="MegaWall" type="CSGCombiner3D" parent="." unique_id=832205557]
+transform = Transform3D(-0.06989573, 4.3604484e-08, 0.9975543, 0.9975543, 3.0552394e-09, 0.06989573, 0, 1, -4.371139e-08, -34.262985, 0, -15.1707115)
+use_collision = true
+
+[node name="Left" type="Node3D" parent="MegaWall" unique_id=1466156788]
+
+[node name="Node3D" type="Node3D" parent="MegaWall/Left" unique_id=1543312408]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Left/Node3D" unique_id=1283012153]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Left/Node3D" unique_id=2114660144]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Left/Node3D" unique_id=926038738]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Left/Node3D" unique_id=1413169587]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D4" type="Node3D" parent="MegaWall/Left" unique_id=1005125245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -102, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Left/Node3D4" unique_id=1392598560]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Left/Node3D4" unique_id=130477735]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Left/Node3D4" unique_id=1581926494]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Left/Node3D4" unique_id=548082255]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D5" type="Node3D" parent="MegaWall/Left" unique_id=1644827808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -202, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Left/Node3D5" unique_id=677375481]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Left/Node3D5" unique_id=873390082]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Left/Node3D5" unique_id=829720191]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Left/Node3D5" unique_id=943762969]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D2" type="Node3D" parent="MegaWall/Left" unique_id=1970112797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Left/Node3D2" unique_id=1832050289]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Left/Node3D2" unique_id=432073091]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Left/Node3D2" unique_id=36453292]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Left/Node3D2" unique_id=1984952581]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D3" type="Node3D" parent="MegaWall/Left" unique_id=1013441469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 204, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Left/Node3D3" unique_id=274323727]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Left/Node3D3" unique_id=131701728]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Left/Node3D3" unique_id=1909106410]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Left/Node3D3" unique_id=1666786368]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Right" type="Node3D" parent="MegaWall" unique_id=822302888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.434448)
+
+[node name="Node3D" type="Node3D" parent="MegaWall/Right" unique_id=522957090]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Right/Node3D" unique_id=763804965]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Right/Node3D" unique_id=250022195]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Right/Node3D" unique_id=1329948841]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Right/Node3D" unique_id=1555139984]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D4" type="Node3D" parent="MegaWall/Right" unique_id=110520486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -102, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Right/Node3D4" unique_id=1706426978]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Right/Node3D4" unique_id=984889202]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Right/Node3D4" unique_id=214459327]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Right/Node3D4" unique_id=1088135528]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D5" type="Node3D" parent="MegaWall/Right" unique_id=1232470526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -202, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Right/Node3D5" unique_id=13554810]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Right/Node3D5" unique_id=819755331]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Right/Node3D5" unique_id=1935296991]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Right/Node3D5" unique_id=1256030684]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D2" type="Node3D" parent="MegaWall/Right" unique_id=2100387172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Right/Node3D2" unique_id=437799768]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Right/Node3D2" unique_id=1001918037]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Right/Node3D2" unique_id=999318903]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Right/Node3D2" unique_id=1173021437]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="Node3D3" type="Node3D" parent="MegaWall/Right" unique_id=452479992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 204, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall/Right/Node3D3" unique_id=535033448]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12.060133, 13.383703)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="MegaWall/Right/Node3D3" unique_id=1001321913]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="MegaWall/Right/Node3D3" unique_id=419598855]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 72, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="MegaWall/Right/Node3D3" unique_id=1893444178]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 102, 13.384)
+light_color = Color(0.88235295, 1, 1, 1)
+light_energy = 3.421
+light_size = 0.434
+shadow_enabled = true
+spot_range = 16.81245
+spot_angle = 67.161354
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="MegaWall" unique_id=1521889644]
+radius = 15.0
+height = 1000.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="MegaWall/CSGCylinder3D" unique_id=275438903]
+operation = 2
+radius = 14.0
+height = 998.0
+
+[node name="CSGBox3D_Cut3" type="CSGBox3D" parent="MegaWall/CSGCylinder3D" unique_id=1023468410]
+transform = Transform3D(1.937151e-07, 0, 1.4265665, 4.973799e-14, 1, 1.9747896e-15, -0.9999978, 0, 3.5762787e-07, 6.7740307, 0.3018465, 11.661152)
+operation = 2
+size = Vector3(3, 3.2, 2.425879)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MegaWall" unique_id=537716915]
+transform = Transform3D(0.99999523, -0.0030085833, 0.0007166676, -0.0007026082, 0.0046715736, 0.99998885, -0.0030118977, -0.99998456, 0.0046694377, -12.6619, 11.349964, 0.96160316)
+light_energy = 2.579
+shadow_enabled = true
+spot_range = 13.887119
+spot_angle = 64.99977

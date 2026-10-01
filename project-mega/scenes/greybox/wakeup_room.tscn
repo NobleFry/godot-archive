@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ctbhmbe0hsiwj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yhtev"]
+radius = 0.4
+height = 1.8
+
+[node name="WakeUpRoom" type="Node3D" unique_id=640103095]
+
+[node name="Geo" type="Node3D" parent="." unique_id=1558031135]
+
+[node name="Room" type="CSGCombiner3D" parent="Geo" unique_id=1756429069]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Geo/Room" unique_id=1529148891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(6, 0.2, 8)
+
+[node name="Ceiling" type="CSGBox3D" parent="Geo/Room" unique_id=916821964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1000001, 0)
+size = Vector3(6, 0.2, 8)
+
+[node name="Wall_L" type="CSGBox3D" parent="Geo/Room" unique_id=2068508157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1000001, 1.5, 0)
+size = Vector3(0.2, 3, 8)
+
+[node name="Wall_R" type="CSGBox3D" parent="Geo/Room" unique_id=1011137526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1000001, 1.5, 0)
+size = Vector3(0.2, 3, 8)
+
+[node name="BackWall" type="CSGBox3D" parent="Geo/Room" unique_id=1738386652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.1)
+size = Vector3(6, 3, 0.2)
+
+[node name="FrontWall" type="CSGBox3D" parent="Geo/Room" unique_id=596694588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.1)
+size = Vector3(6, 3, 0.2)
+
+[node name="Doorway_cut" type="CSGBox3D" parent="Geo/Room" unique_id=1008277533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9000001, 1.1, -4.1)
+operation = 2
+size = Vector3(1, 2.2, 0.4)
+
+[node name="PartitionWall" type="CSGBox3D" parent="Geo/Room" unique_id=383919782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.5, -1.9000001)
+size = Vector3(3.4, 3, 0.2)
+
+[node name="PartitionWall2" type="CSGBox3D" parent="Geo/Room" unique_id=1528349232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.5, -3)
+size = Vector3(0.2, 3, 2)
+
+[node name="Doorway_cut2" type="CSGBox3D" parent="Geo/Room" unique_id=1112076363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.1, -2.7)
+operation = 2
+size = Vector3(0.4, 2.2, 1)
+
+[node name="Bed" type="CSGCombiner3D" parent="Geo" unique_id=1034959558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, 2.5000002)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo/Bed" unique_id=1973843211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+size = Vector3(2.2, 0.6, 1.2)
+
+[node name="Cabinet" type="CSGCombiner3D" parent="Geo" unique_id=1171977189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000001, -1.4901161e-08, 3.6000001)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo/Cabinet" unique_id=522791941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(0.6, 1, 0.8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geo/Cabinet" unique_id=1394369119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25000006, 0)
+operation = 2
+size = Vector3(0.4, 0.9, 0.8)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geo/Cabinet" unique_id=413007576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25000006, 0)
+operation = 2
+size = Vector3(0.6, 0.9, 0.6)
+
+[node name="Doorway" type="CSGCombiner3D" parent="Geo" unique_id=1230004473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -4.1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo/Doorway" unique_id=123280792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+size = Vector3(1.2, 2.3, 0.4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geo/Doorway" unique_id=1160297321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+operation = 2
+size = Vector3(1, 2.2, 0.4)
+
+[node name="Kitchen" type="CSGCombiner3D" parent="Geo" unique_id=1591639716]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo/Kitchen" unique_id=623803625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3000002, 0.5, 0.10000007)
+size = Vector3(3.4, 1, 0.6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geo/Kitchen" unique_id=1291460841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3000002, 2.5000002, 0.10000007)
+size = Vector3(3.4, 1, 0.6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geo/Kitchen" unique_id=578534371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.5, -1)
+size = Vector3(0.6, 1, 1.6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geo/Kitchen" unique_id=2140607073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 2.5, -1)
+size = Vector3(0.6, 1, 1.6)
+
+[node name="Lighting2" type="CSGCombiner3D" parent="." unique_id=1962954432]
+
+[node name="Lighting" type="Node3D" parent="." unique_id=1521648260]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting" unique_id=562575167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6000001, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1339748388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.9, 1.5000001)
+mesh = SubResource("CapsuleMesh_yhtev")

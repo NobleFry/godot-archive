@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bft67hyc85riw"]
+
+[node name="Final" type="Node3D" unique_id=1221525784]
+
+[node name="Geo" type="Node3D" parent="." unique_id=1349983647]
+
+[node name="Corridor" type="CSGCombiner3D" parent="Geo" unique_id=1630277720]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Geo/Corridor" unique_id=772031202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(4, 0.2, 20)
+
+[node name="ObservationPoint" type="CSGCombiner3D" parent="Geo" unique_id=2106220208]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geo/ObservationPoint" unique_id=874031190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.1, -10)
+size = Vector3(5, 0.2, 10)

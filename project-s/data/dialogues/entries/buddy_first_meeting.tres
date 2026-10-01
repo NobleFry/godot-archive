@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://dvei6xkkeb3i5"]
+
+[ext_resource type="Script" uid="uid://dd4prp8dknc2h" path="res://scripts/resources/dialogue_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://d0187gqcfnk8" path="res://scripts/resources/dialogue_condition.gd" id="2_cond"]
+[ext_resource type="Resource" uid="uid://cxtwo6t7yvipf" path="res://data/dialogues/buddy_intro.tres" id="3_dialogue"]
+
+[sub_resource type="Resource" id="cond_not_seen"]
+script = ExtResource("2_cond")
+condition_type = 8
+target_name = "buddy_first_meeting"
+
+[resource]
+script = ExtResource("1_entry")
+dialogue_id = "buddy_first_meeting"
+dialogue = ExtResource("3_dialogue")
+priority = 10
+conditions = Array[ExtResource("2_cond")]([SubResource("cond_not_seen")])
+set_flags_on_complete = {
+"met_buddy": true
+}
+one_shot = true
+description = "First meeting with Buddy. Only triggers once."

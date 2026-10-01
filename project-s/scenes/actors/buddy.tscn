@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0dbsw4aewu3x"]
+
+[ext_resource type="Script" uid="uid://c51jkmfvo534h" path="res://scripts/actors/buddy.gd" id="1_buddy"]
+[ext_resource type="Script" uid="uid://dbqtvn3ot3j25" path="res://scripts/components/dialogue_registry.gd" id="2_751f2"]
+[ext_resource type="Script" uid="uid://dd4prp8dknc2h" path="res://scripts/resources/dialogue_entry.gd" id="3_1jeug"]
+[ext_resource type="Resource" uid="uid://dvei6xkkeb3i5" path="res://data/dialogues/entries/buddy_first_meeting.tres" id="4_cjg1j"]
+[ext_resource type="Resource" uid="uid://c3fr47172mu30" path="res://data/dialogues/entries/buddy_quest_offer.tres" id="5_clsxb"]
+[ext_resource type="Resource" uid="uid://bwsdopsbbioib" path="res://data/dialogues/entries/buddy_quest_invite.tres" id="6_cjg1j"]
+[ext_resource type="Resource" uid="uid://cai63qs83efg5" path="res://data/dialogues/entries/buddy_chat.tres" id="6_hl16i"]
+[ext_resource type="PackedScene" uid="uid://dsdi2dv0wklj0" path="res://assets/models/actors/puppet_test.glb" id="8_clsxb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_350nn"]
+height = 1.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 1.5
+
+[node name="Buddy" type="CharacterBody3D" unique_id=223733006 node_paths=PackedStringArray("dialogue_registry")]
+script = ExtResource("1_buddy")
+dialogue_registry = NodePath("DialogueRegistry")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=961698750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_350nn")
+
+[node name="InteractionZone" type="Area3D" parent="." unique_id=1827189490]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone" unique_id=1582871929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="DialogueRegistry" type="Node" parent="." unique_id=1099028966]
+script = ExtResource("2_751f2")
+npc_id = "buddy"
+dialogue_entries = Array[ExtResource("3_1jeug")]([ExtResource("4_cjg1j"), ExtResource("5_clsxb"), ExtResource("6_cjg1j"), ExtResource("6_hl16i")])
+
+[node name="puppet_test" parent="." unique_id=1305292675 instance=ExtResource("8_clsxb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

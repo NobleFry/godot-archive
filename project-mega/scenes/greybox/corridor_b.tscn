@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://psb26qdo4fmx"]
+
+[node name="CorridorA" type="Node3D" unique_id=574884213]
+
+[node name="Geo" type="Node3D" parent="." unique_id=1802492209]
+
+[node name="MainStruture" type="CSGCombiner3D" parent="Geo" unique_id=312051625]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Geo/MainStruture" unique_id=1075352103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="Ceiling" type="CSGBox3D" parent="Geo/MainStruture" unique_id=1062659703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+size = Vector3(3, 0.2, 15)
+
+[node name="Wall_L" type="CSGBox3D" parent="Geo/MainStruture" unique_id=224174647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.2000003, 0)
+size = Vector3(0.2, 4.4, 15)
+
+[node name="Wall_R" type="CSGBox3D" parent="Geo/MainStruture" unique_id=1253665141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2.2, 0)
+visible = false
+size = Vector3(0.2, 4.4, 15)
+
+[node name="EndCap_A" type="CSGBox3D" parent="Geo/MainStruture" unique_id=1902361347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -7.6000004)
+visible = false
+size = Vector3(3, 4.4, 0.2)
+
+[node name="EndCap_B" type="CSGBox3D" parent="Geo/MainStruture" unique_id=653173632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2000003, 7.6000004)
+visible = false
+size = Vector3(3, 4.4, 0.2)
+
+[node name="Pipeline" type="CSGCombiner3D" parent="Geo" unique_id=896547677]
+
+[node name="0_3_1" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=1883214901]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1999999, 4.1, 0)
+radius = 0.3
+height = 15.0
+
+[node name="Round_3_1" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_1" unique_id=551554291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4, 0)
+radius = 0.4
+height = 0.2
+
+[node name="Round_3_2" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_1" unique_id=251156515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4000001, 0)
+radius = 0.4
+height = 0.2
+
+[node name="Round_3_3" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_1" unique_id=699714682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5999999, 0)
+radius = 0.4
+height = 0.2
+
+[node name="Round_3_4" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_1" unique_id=1920506816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, 0)
+radius = 0.4
+height = 0.2
+
+[node name="0_3_L" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=1204518994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2.2875, 2.9)
+radius = 0.3
+height = 3.4750001
+
+[node name="0_3_L2" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_L" unique_id=258813471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1999999, 0)
+radius = 0.4
+height = 0.2
+
+[node name="0_3_L3" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_L" unique_id=2102830860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1000001, 0)
+radius = 0.4
+height = 0.2
+
+[node name="0_3_L2" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=645459968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2.2875, -3.1)
+radius = 0.3
+height = 3.4750001
+
+[node name="0_3_L2" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_L2" unique_id=1497912191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1999999, 0)
+radius = 0.4
+height = 0.2
+
+[node name="0_3_L3" type="CSGCylinder3D" parent="Geo/Pipeline/0_3_L2" unique_id=1483214804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1000001, 0)
+radius = 0.4
+height = 0.2
+
+[node name="0_4_1" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=2013504313]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.1000001, 4, 0)
+radius = 0.4
+height = 15.0
+
+[node name="Round_4_1" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_1" unique_id=426973553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4, -2.3841858e-07)
+height = 0.2
+
+[node name="Round_4_2" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_1" unique_id=323341613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+height = 0.2
+
+[node name="Round_4_3" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_1" unique_id=186812276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+height = 0.2
+
+[node name="Round_4_4" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_1" unique_id=1486342062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, 0)
+height = 0.2
+
+[node name="0_4_2" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=261445616]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.0999998, 0.39999986, 0)
+radius = 0.4
+height = 15.0
+
+[node name="Round_4_1" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_2" unique_id=1576071084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, -4.4, -2.9802322e-08)
+height = 0.2
+
+[node name="Round_4_2" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_2" unique_id=75342578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, -1.4, 8.940697e-08)
+height = 0.2
+
+[node name="Round_4_3" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_2" unique_id=59842562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 1.6, 2.0861626e-07)
+height = 0.2
+
+[node name="Round_4_4" type="CSGCylinder3D" parent="Geo/Pipeline/0_4_2" unique_id=1962073964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 4.6, 3.5762787e-07)
+height = 0.2
+
+[node name="0_2_1" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=641499720]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.69999987, 4.2, 0)
+radius = 0.2
+height = 15.0
+
+[node name="0_2_2" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=1101262565]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2999999, 4.2, 0)
+radius = 0.2
+height = 15.0
+
+[node name="0_2_3" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=233697709]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.10000013, 4.2, 0)
+radius = 0.2
+height = 15.0
+
+[node name="0_2_4" type="CSGCylinder3D" parent="Geo/Pipeline" unique_id=2024355106]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.5000001, 4.2, 0)
+radius = 0.2
+height = 15.0
+
+[node name="Support" type="CSGCombiner3D" parent="Geo/Pipeline" unique_id=293866865]
+
+[node name="Support_1" type="CSGBox3D" parent="Geo/Pipeline/Support" unique_id=864963362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09999997, 4.1, 4.4)
+size = Vector3(1.5, 0.2, 0.2)
+
+[node name="Support_2" type="CSGBox3D" parent="Geo/Pipeline/Support" unique_id=1645122061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.1, 1.4000001)
+size = Vector3(1.5, 0.2, 0.2)
+
+[node name="Support_3" type="CSGBox3D" parent="Geo/Pipeline/Support" unique_id=697787286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.1, -1.5999999)
+size = Vector3(1.5, 0.2, 0.2)
+
+[node name="Support_4" type="CSGBox3D" parent="Geo/Pipeline/Support" unique_id=1186375656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.1, -4.6)
+size = Vector3(1.5, 0.2, 0.2)
+
+[node name="Lighting" type="Node3D" parent="." unique_id=811404321]
+
+[node name="Audio" type="Node3D" parent="." unique_id=296493362]

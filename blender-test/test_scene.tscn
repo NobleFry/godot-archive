@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bcob6gyu2gkbi"]
+
+[ext_resource type="PackedScene" uid="uid://cswwt6xsnc7mu" path="res://test_scene.blend" id="1_uhqqe"]
+
+[node name="Node3D" type="Node3D" unique_id=426333783]
+
+[node name="test_scene" parent="." unique_id=996711351 instance=ExtResource("1_uhqqe")]
+
+[editable path="test_scene"]

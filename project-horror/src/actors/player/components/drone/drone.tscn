@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dyt7rdd3w7jdc"]
+
+[ext_resource type="Script" uid="uid://0cxf4tkd3i83" path="res://src/actors/player/components/drone/drone.gd" id="1_6i62b"]
+[ext_resource type="Script" uid="uid://b2ktcirf5qdgn" path="res://src/actors/player/components/drone/battery_component.gd" id="2_8n37w"]
+[ext_resource type="Script" uid="uid://dy4oi8wpvnm84" path="res://src/actors/player/components/drone/states/drone_state.gd" id="3_mnm3m"]
+[ext_resource type="Script" uid="uid://bl8bhjhnnsv8m" path="res://src/actors/player/components/drone/states/first_person_state.gd" id="4_ry8i8"]
+[ext_resource type="Script" uid="uid://c61lhg0kusacu" path="res://src/actors/player/components/drone/states/third_person_state.gd" id="5_rnljx"]
+[ext_resource type="Script" uid="uid://1ip5yv8bbesd" path="res://src/actors/player/components/drone/states/free_flight_state.gd" id="6_0crpj"]
+[ext_resource type="Script" uid="uid://bkij3w1j7hp8m" path="res://src/actors/player/components/drone/states/standby_state.gd" id="7_oi4ym"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6i62b"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6i62b"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="Drone" type="CharacterBody3D" unique_id=1008549235]
+script = ExtResource("1_6i62b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=171979334]
+shape = SubResource("BoxShape3D_6i62b")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1115975591]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=558175172]
+mesh = SubResource("BoxMesh_6i62b")
+
+[node name="DroneCamera" type="Camera3D" parent="." unique_id=1840601297]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1648336539]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1196006993]
+
+[node name="BatteryComponent" type="Node" parent="." unique_id=1213140486]
+script = ExtResource("2_8n37w")
+
+[node name="States" type="Node" parent="." unique_id=471767769]
+script = ExtResource("3_mnm3m")
+
+[node name="FirstPersonState" type="Node" parent="States" unique_id=1778800761]
+script = ExtResource("4_ry8i8")
+
+[node name="ThirdPersonFollowState" type="Node" parent="States" unique_id=1581540043]
+script = ExtResource("5_rnljx")
+
+[node name="FreeFlightState" type="Node" parent="States" unique_id=495255684]
+script = ExtResource("6_0crpj")
+
+[node name="StandbyState" type="Node" parent="States" unique_id=1729255827]
+script = ExtResource("7_oi4ym")

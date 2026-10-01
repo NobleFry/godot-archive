@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvtlhn8vly7s0"]
+
+[ext_resource type="PackedScene" uid="uid://dgad4pjkwv1ko" path="res://assets/models/environment/test_ground.glb" id="1_gdidw"]
+[ext_resource type="PackedScene" uid="uid://c8wpu6hgd6joy" path="res://scenes/character/player.tscn" id="2_q2ft4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sg0hb"]
+
+[sub_resource type="Sky" id="Sky_gdidw"]
+sky_material = SubResource("ProceduralSkyMaterial_sg0hb")
+
+[sub_resource type="Environment" id="Environment_gdidw"]
+background_mode = 2
+sky = SubResource("Sky_gdidw")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[node name="TestGround" type="Node3D" unique_id=2045534091]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1059501040]
+environment = SubResource("Environment_gdidw")
+
+[node name="test_ground" parent="." unique_id=657893115 instance=ExtResource("1_gdidw")]
+
+[node name="Player" parent="." unique_id=820881750 instance=ExtResource("2_q2ft4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[editable path="test_ground"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://cokifyhnd7gvw"]
+
+[ext_resource type="Script" uid="uid://bk7neo84wr4b1" path="res://scripts/resources/dialogue_resource.gd" id="1_3rwin"]
+
+[sub_resource type="Resource" id="Resource_3rwin"]
+script = ExtResource("1_3rwin")
+lines = {
+"Speaker": "Buddy",
+"Text": "Hi there!"
+}
+metadata/_custom_type_script = "uid://bk7neo84wr4b1"
+
+[resource]
+script = ExtResource("1_3rwin")
+lines = {
+"test": SubResource("Resource_3rwin")
+}
+metadata/_custom_type_script = "uid://bk7neo84wr4b1"

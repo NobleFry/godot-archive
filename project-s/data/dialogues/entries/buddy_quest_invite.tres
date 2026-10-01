@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://bwsdopsbbioib"]
+
+[ext_resource type="Script" uid="uid://dd4prp8dknc2h" path="res://scripts/resources/dialogue_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://d0187gqcfnk8" path="res://scripts/resources/dialogue_condition.gd" id="2_cond"]
+[ext_resource type="Resource" uid="uid://ct3k711f0y11s" path="res://data/dialogues/buddy_quest_invite.tres" id="3_dialogue"]
+
+[sub_resource type="Resource" id="cond_met_buddy"]
+script = ExtResource("2_cond")
+target_name = "met_buddy"
+
+[sub_resource type="Resource" id="cond_quest_not_started"]
+script = ExtResource("2_cond")
+condition_type = 4
+target_name = "ruins_investigation"
+expected_status = "not_started"
+
+[resource]
+script = ExtResource("1_entry")
+dialogue_id = "buddy_quest_invite"
+dialogue = ExtResource("3_dialogue")
+priority = 3
+conditions = Array[ExtResource("2_cond")]([SubResource("cond_met_buddy"), SubResource("cond_quest_not_started")])
+description = "Quest invitation. Shows when player has met Buddy but quest not started."

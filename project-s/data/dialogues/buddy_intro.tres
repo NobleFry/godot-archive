@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://cxtwo6t7yvipf"]
+
+[ext_resource type="Script" uid="uid://bk7neo84wr4b1" path="res://scripts/resources/dialogue_resource.gd" id="1_res"]
+[ext_resource type="Script" uid="uid://hl3vc0vofl0n" path="res://scripts/resources/dialogue_line.gd" id="2_line"]
+[ext_resource type="Script" uid="uid://pqbhacojkrq0" path="res://scripts/resources/dialogue_choice.gd" id="3_choice"]
+
+[sub_resource type="Resource" id="line_buddy_explain"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "This is our research facility. We've been working on something incredible with crystal energy."
+next_id = "buddy_intro_end"
+
+[sub_resource type="Resource" id="line_buddy_intro_end"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Feel free to look around. Let me know if you want to help with our research!"
+
+[sub_resource type="Resource" id="line_player_response"]
+script = ExtResource("2_line")
+speaker = "You"
+text = "I'm doing alright. What is this place?"
+next_id = "buddy_explain"
+
+[sub_resource type="Resource" id="line_start"]
+script = ExtResource("2_line")
+speaker = "Buddy"
+text = "Hey there! Welcome to the lab. How are you feeling?"
+next_id = "player_response"
+
+[resource]
+script = ExtResource("1_res")
+lines = {
+"buddy_explain": SubResource("line_buddy_explain"),
+"buddy_intro_end": SubResource("line_buddy_intro_end"),
+"player_response": SubResource("line_player_response"),
+"start": SubResource("line_start")
+}

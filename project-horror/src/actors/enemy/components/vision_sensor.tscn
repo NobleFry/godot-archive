@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cslu5gtm7atya"]
+
+[ext_resource type="Script" uid="uid://40d00ek4r43q" path="res://src/actors/enemy/components/vision_sensor.gd" id="1_5rx6q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sc0cl"]
+radius = 15.0
+
+[node name="VisionSensor" type="Node3D" unique_id=833378481]
+script = ExtResource("1_5rx6q")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1657814841]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=1709740089]
+shape = SubResource("SphereShape3D_sc0cl")
+
+[node name="EyePosition" type="Marker3D" parent="." unique_id=573301835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://5tmxjsqmb2yr"]
+
+[node name="Turning" type="Node3D" unique_id=416961071]
+
+[node name="Geo" type="Node3D" parent="." unique_id=1708369206]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Geo" unique_id=1157432810]
+
+[node name="Floor" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1863619006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(3.4, 0.2, 3.4)
+
+[node name="Ceiling" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1872547327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1000001, 0)
+size = Vector3(3.4, 0.2, 3.4)
+
+[node name="Left" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=5655375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.5, 0)
+size = Vector3(0.2, 3, 3.4)
+
+[node name="Right" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=508060966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.5, 0)
+size = Vector3(0.2, 3, 3.4)
+
+[node name="Front" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1895032133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.6)
+size = Vector3(3.4, 3, 0.2)
+
+[node name="Back" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1418753964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.6)
+size = Vector3(3.4, 3, 0.2)
+
+[node name="Cut" type="CSGBox3D" parent="Geo/CSGCombiner3D" unique_id=1260272701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, -1.6)
+operation = 2
+size = Vector3(0.2, 3.2, 0.2)

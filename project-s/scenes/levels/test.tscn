@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dmnp55my83lw2"]
+
+[ext_resource type="PackedScene" uid="uid://dtp2dxarhqugv" path="res://scenes/actors/player.tscn" id="1_8153q"]
+[ext_resource type="PackedScene" uid="uid://d0dbsw4aewu3x" path="res://scenes/actors/buddy.tscn" id="2_52kye"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qgfly"]
+
+[sub_resource type="Sky" id="Sky_8153q"]
+sky_material = SubResource("PhysicalSkyMaterial_qgfly")
+
+[sub_resource type="Environment" id="Environment_52kye"]
+background_mode = 2
+sky = SubResource("Sky_8153q")
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_density = 0.1196
+
+[node name="Test" type="Node3D" unique_id=1265598511]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1691556195]
+environment = SubResource("Environment_52kye")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2124101504]
+transform = Transform3D(1, 0, 0, 0, 0.86602545, 0.5, 0, -0.5, 0.8660253, 0, 2.653797, 0)
+shadow_enabled = true
+
+[node name="ground" type="CSGBox3D" parent="." unique_id=508338157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+size = Vector3(100, 0.2, 100)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="ground" unique_id=2051232554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.1, 0)
+operation = 2
+size = Vector3(3, 1, 6)
+
+[node name="Player" parent="." unique_id=655296775 instance=ExtResource("1_8153q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=163947089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 2.4, 0)
+use_collision = true
+size = Vector3(14.6, 4.8, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=2075067763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+operation = 2
+size = Vector3(1, 2.3, 1)
+
+[node name="Buddy" parent="." unique_id=223733006 instance=ExtResource("2_52kye")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.09999993, -3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=689787275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.3, 0)
+use_collision = true
+size = Vector3(1, 0.6, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=538762399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.049999993, 2.5)
+use_collision = true
+size = Vector3(1, 0.1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=205745070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5000005, 0.90000004, 0)
+use_collision = true
+size = Vector3(1, 0.6, 1)
